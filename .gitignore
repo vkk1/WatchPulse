@@ -1,2 +1,6 @@
 .env 
 backend/.venv
+.gitignore
+.gitattributes
+__pycache__/
+*.pyc
