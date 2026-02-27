@@ -34,6 +34,7 @@ body {
   border-radius: var(--radius);
   padding: 1.2rem 1.3rem;
   box-shadow: var(--shadow);
+  text-align: center;
 }
 
 .hero h1 {
