@@ -1,18 +1,18 @@
-# WatchPulse
+﻿# WatchPulse
 
-WatchPulse is a data driven platform that estimates luxury watch wait times and tracks real world market prices for Rolex.
+WatchPulse is a data-driven platform that estimates luxury watch scarcity and tracks real-world market prices for Rolex.
 
-It ingests secondary market listing data, computes model level statistics (median price, premium over MSRP, scarcity signals), and produces a **Wait-Time Index** with an estimated wait band.
+It ingests secondary-market listing data, computes model-level statistics (median price, premium over MSRP, scarcity signals), and produces a **Scarcity Index** with an estimated scarcity band.
 
 For each watch model, WatchPulse provides:
 
-* Current median market price
-* Premium over MSRP
-* Historical price trend
-* Wait Time Index (0–1 score)
-* Estimated wait band (0–6 months → 5–8+ years)
+- Current median market price
+- Premium over MSRP
+- Historical price trend
+- Scarcity Index (0-1 score)
+- Estimated scarcity band (0-6 months -> 5-8+ years)
 
-Wait times are derived from observable market signals and are not official authorized dealer waitlists.
+Scarcity estimates are derived from observable market signals and are not official authorized-dealer waitlists.
 
 ---
 
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 Create a `.env` file inside `backend/`:
 
-```
+```env
 SUPABASE_URL=your_url
 SUPABASE_KEY=your_key
 ```
@@ -41,9 +41,9 @@ Run the API:
 uvicorn app.main:app --reload
 ```
 
-The API will run at:
+The API runs at:
 
-```
+```text
 http://127.0.0.1:8000
 ```
 
@@ -57,11 +57,11 @@ python -m app.ingest.run_ingest --brand rolex --date YYYY-MM-DD
 
 This command:
 
-* Pulls listing data
-* Computes daily model statistics
-* Updates the Wait Time Index
+- Pulls listing data
+- Computes daily model statistics
+- Updates the Scarcity Index
 
-The ingestion process is idempotent (safe to re run for the same date).
+The ingestion process is idempotent (safe to re-run for the same date).
 
 ---
 
@@ -69,7 +69,7 @@ The ingestion process is idempotent (safe to re run for the same date).
 
 Open directly:
 
-```
+```text
 frontend/index.html
 ```
 
@@ -82,7 +82,7 @@ python -m http.server 8000
 
 Then visit:
 
-```
+```text
 http://localhost:8000
 ```
 
@@ -96,4 +96,4 @@ pytest
 
 ---
 
-WatchPulse focuses on clean system design, reproducible daily stats, and transparent wait time estimation using measurable market signals.
+WatchPulse focuses on clean system design, reproducible daily stats, and transparent scarcity estimation using measurable market signals.

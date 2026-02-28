@@ -38,8 +38,8 @@ function renderShell() {
         <div class="kpis">
           <div class="kpi"><span class="label">Median Price</span><span id="kpiMedian" class="value">-</span></div>
           <div class="kpi"><span class="label">Price vs Retail</span><span id="kpiPremium" class="value">-</span></div>
-          <div class="kpi"><span class="label">Estimated Wait Time</span><span id="kpiWaitBand" class="value">-</span></div>
-          <div class="kpi"><span class="label">Demand Score</span><span id="kpiWaitIndex" class="value">-</span></div>
+          <div class="kpi"><span class="label">Scarcity Index Band</span><span id="kpiWaitBand" class="value">-</span></div>
+          <div class="kpi"><span class="label">Scarcity Index</span><span id="kpiWaitIndex" class="value">-</span></div>
         </div>
       </section>
 
@@ -60,7 +60,7 @@ function renderShell() {
       </section>
 
       <section class="panel">
-        <h2>Why This Wait Time</h2>
+        <h2>Why This Scarcity Index</h2>
         <div class="signal-grid">
           <div class="signal"><span class="label">Price vs Retail</span><span id="sigPremium" class="value">-</span></div>
           <div class="signal"><span class="label">Available Now</span><span id="sigAvailability" class="value">-</span></div>
@@ -71,10 +71,10 @@ function renderShell() {
       <section class="panel">
         <h2>Methodology</h2>
         <ul>
-          <li>We estimate wait time using three signals: price vs retail, current availability, and market speed.</li>
-          <li>When market prices stay above retail and fewer listings are available, expected wait time increases.</li>
+          <li>We estimate the Scarcity Index using three signals: price vs retail, current availability, and market speed.</li>
+          <li>When market prices stay above retail and fewer listings are available, the Scarcity Index increases.</li>
           <li>Market speed reflects how fast listings turn over from day to day.</li>
-          <li>Demand Score is mapped to a wait range: 0-6 months, 6-18 months, 18 months-3 years, 3-5 years, and 5-8+ years.</li>
+          <li>Scarcity Index is mapped to bands: 0-6 months, 6-18 months, 18 months-3 years, 3-5 years, and 5-8+ years.</li>
         </ul>
       </section>
     </main>

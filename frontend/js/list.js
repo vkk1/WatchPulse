@@ -33,7 +33,7 @@ function renderShell() {
     <main class="page">
       <header class="hero">
         <p class="eyebrow">WatchPulse</p>
-        <h1>Rolex Wait-Time Intelligence</h1>
+        <h1>Rolex Scarcity Index Intelligence</h1>
         <p class="subtle">Search References and Filter Collections</p>
       </header>
 
@@ -49,7 +49,7 @@ function renderShell() {
         <div class="control">
           <label for="sortSelect">Sort</label>
           <select id="sortSelect">
-            <option value="wait_time_index_desc">Wait time index (high to low)</option>
+            <option value="wait_time_index_desc">Scarcity Index (high to low)</option>
             <option value="premium_desc">Price vs retail (high to low)</option>
             <option value="price_asc">Market price (low to high)</option>
             <option value="price_desc">Market price (high to low)</option>
@@ -162,8 +162,8 @@ function renderCards(items) {
             <div class="metric-row">
               <span class="badge">MSRP ${fmtCurrency(item.msrp)}</span>
               <span class="badge">Median ${fmtCurrency(item.current_median_price)}</span>
-              <span class="${waitBadgeClass(item.wait_band)}">Wait Time: ${esc(item.wait_band || "No wait band")}</span>
-              <span class="badge">Wait Index: ${esc(waitIndex)}</span>
+              <span class="${waitBadgeClass(item.wait_band)}">Scarcity Index Band: ${esc(item.wait_band || "No band")}</span>
+              <span class="badge">Scarcity Index: ${esc(waitIndex)}</span>
             </div>
           </div>
           <div class="card-actions">
