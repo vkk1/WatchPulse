@@ -34,7 +34,7 @@ function renderShell() {
       <header class="hero">
         <p class="eyebrow">WatchPulse</p>
         <h1>Rolex Wait-Time Intelligence</h1>
-        <p class="subtle">Search references and filter collections</p>
+        <p class="subtle">Search References and Filter Collections</p>
       </header>
 
       <section class="panel controls">
