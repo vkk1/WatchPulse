@@ -1,15 +1,15 @@
 # WatchPulse
 
-WatchPulse is a data-driven platform that estimates luxury watch wait times and tracks real-world market prices for a single brand (e.g., Rolex or Patek).
+WatchPulse is a data driven platform that estimates luxury watch wait times and tracks real world market prices for Rolex.
 
-It ingests secondary-market listing data daily, computes model-level statistics (median price, premium over MSRP, scarcity signals), and produces a **Wait-Time Index** with an estimated wait band.
+It ingests secondary market listing data, computes model level statistics (median price, premium over MSRP, scarcity signals), and produces a **Wait-Time Index** with an estimated wait band.
 
 For each watch model, WatchPulse provides:
 
 * Current median market price
 * Premium over MSRP
 * Historical price trend
-* Wait-Time Index (0–1 score)
+* Wait Time Index (0–1 score)
 * Estimated wait band (0–6 months → 5–8+ years)
 
 Wait times are derived from observable market signals and are not official authorized dealer waitlists.
@@ -59,9 +59,9 @@ This command:
 
 * Pulls listing data
 * Computes daily model statistics
-* Updates the Wait-Time Index
+* Updates the Wait Time Index
 
-The ingestion process is idempotent (safe to re-run for the same date).
+The ingestion process is idempotent (safe to re run for the same date).
 
 ---
 
@@ -96,4 +96,4 @@ pytest
 
 ---
 
-WatchPulse focuses on clean system design, reproducible daily stats, and transparent wait-time estimation using measurable market signals.
+WatchPulse focuses on clean system design, reproducible daily stats, and transparent wait time estimation using measurable market signals.
