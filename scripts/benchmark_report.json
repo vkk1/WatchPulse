@@ -1,0 +1,36 @@
+{
+  "timestamp_utc": "2026-02-28T14:51:54.716138+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "endpoint": "/v1/models",
+  "requests": 300,
+  "concurrency": 10,
+  "page_size": 25,
+  "warmup_requests": 20,
+  "vary_params": true,
+  "max_retries": 5,
+  "retry_backoff_ms": 75,
+  "total_attempts": 824,
+  "total_duration_sec": 57.3119,
+  "throughput_rps": 5.23,
+  "latency_ms": {
+    "avg": 526.08,
+    "p50": 296.47,
+    "p95": 725.48,
+    "min": 132.29,
+    "max": 10011.25
+  },
+  "success_count": 279,
+  "error_count": 21,
+  "status_counts": {
+    "200": 279,
+    "500": 17,
+    "0": 4
+  },
+  "errors_sample": [
+    "HTTP Error 500: Internal Server Error",
+    "HTTP Error 500: Internal Server Error",
+    "HTTP Error 500: Internal Server Error",
+    "HTTP Error 500: Internal Server Error",
+    "timed out"
+  ]
+}

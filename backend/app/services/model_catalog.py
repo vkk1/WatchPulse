@@ -9,19 +9,31 @@ def _latest_stats_by_model(model_ids: list[int]) -> dict[int, dict[str, Any]]:
         return {}
 
     client = get_supabase_client()
-    stats_response = (
-        client.table("model_daily_stats")
-        .select("model_id,captured_date,median_price,wait_band,wait_time_index")
-        .in_("model_id", model_ids)
-        .order("captured_date", desc=True)
-        .execute()
-    )
-    latest: dict[int, dict[str, Any]] = {}
-    for row in stats_response.data or []:
-        model_id = row["model_id"]
-        if model_id not in latest:
-            latest[model_id] = row
-    return latest
+    # Preferred query shape: one row per model from a DISTINCT ON view.
+    try:
+        view_response = (
+            client.table("model_latest_stats")
+            .select("model_id,median_price,wait_band,wait_time_index")
+            .in_("model_id", model_ids)
+            .execute()
+        )
+        return {int(row["model_id"]): row for row in (view_response.data or [])}
+    except Exception:
+        # Backward-compatible fallback if the view has not been created yet.
+        stats_response = (
+            client.table("model_daily_stats")
+            .select("model_id,captured_date,median_price,wait_band,wait_time_index")
+            .in_("model_id", model_ids)
+            .order("model_id")
+            .order("captured_date", desc=True)
+            .execute()
+        )
+        latest: dict[int, dict[str, Any]] = {}
+        for row in stats_response.data or []:
+            model_id = int(row["model_id"])
+            if model_id not in latest:
+                latest[model_id] = row
+        return latest
 
 
 def list_models(*, page: int, page_size: int, q: str | None = None, collection: str | None = None) -> dict[str, Any]:
@@ -32,7 +44,7 @@ def list_models(*, page: int, page_size: int, q: str | None = None, collection: 
     query = (
         client.table("brand_models")
         .select(
-            "id,brand,collection,model_name,ref_code,msrp,case_material,bracelet,dial,size_mm,image_url",
+            "id,brand,collection,model_name,ref_code,msrp,image_url",
             count="exact",
         )
         .eq("brand", settings.rolex_brand)
