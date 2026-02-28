@@ -6,6 +6,7 @@ const state = {
   pageSize: 12,
   q: "",
   collection: "",
+  sort: "wait_time_index_desc",
   totalPages: 1,
 };
 
@@ -33,7 +34,7 @@ function renderShell() {
       <header class="hero">
         <p class="eyebrow">WatchPulse</p>
         <h1>Rolex Wait-Time Intelligence</h1>
-        <p class="subtle">Search references, filter collections, and compare wait pressure</p>
+        <p class="subtle">Search references and filter collections</p>
       </header>
 
       <section class="panel controls">
@@ -45,6 +46,16 @@ function renderShell() {
           <label for="collectionSelect">Collection</label>
           <select id="collectionSelect"><option value="">All collections</option></select>
         </div>
+        <div class="control">
+          <label for="sortSelect">Sort</label>
+          <select id="sortSelect">
+            <option value="wait_time_index_desc">Wait time index (high to low)</option>
+            <option value="premium_desc">Price vs retail (high to low)</option>
+            <option value="price_asc">Market price (low to high)</option>
+            <option value="price_desc">Market price (high to low)</option>
+          </select>
+        </div>
+        <button id="sortBtn" class="btn secondary">Sort By</button>
         <button id="applyBtn" class="btn">Apply</button>
       </section>
 
@@ -69,13 +80,21 @@ function renderShell() {
 function bindControls() {
   const searchInput = document.getElementById("searchInput");
   const collectionSelect = document.getElementById("collectionSelect");
+  const sortSelect = document.getElementById("sortSelect");
 
   searchInput.value = state.q;
   collectionSelect.value = state.collection;
+  sortSelect.value = state.sort;
 
   const apply = () => {
     state.q = searchInput.value.trim();
     state.collection = collectionSelect.value;
+    state.page = 1;
+    loadModels();
+  };
+
+  const applySort = () => {
+    state.sort = sortSelect.value;
     state.page = 1;
     loadModels();
   };
@@ -91,6 +110,7 @@ function bindControls() {
     state.page = 1;
     loadModels();
   });
+  document.getElementById("sortBtn").addEventListener("click", applySort);
 
   document.getElementById("prevBtn").addEventListener("click", () => {
     if (state.page > 1) {
@@ -169,6 +189,7 @@ async function loadModels() {
       pageSize: state.pageSize,
       q: state.q,
       collection: state.collection,
+      sort: state.sort,
     });
 
     state.totalPages = Math.max(1, Number(data.total_pages || 1));

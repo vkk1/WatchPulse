@@ -11,9 +11,10 @@ def get_models(
     page_size: int = Query(default=25, ge=1, le=100),
     q: str | None = Query(default=None),
     collection: str | None = Query(default=None),
+    sort: str = Query(default="wait_time_index_desc"),
 ) -> dict:
     try:
-        return list_models(page=page, page_size=page_size, q=q, collection=collection)
+        return list_models(page=page, page_size=page_size, q=q, collection=collection, sort=sort)
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Failed to fetch models: {exc}") from exc
 

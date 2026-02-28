@@ -18,10 +18,11 @@ async function request(path, { signal } = {}) {
   return response.json();
 }
 
-export function fetchModels({ page = 1, pageSize = 25, q = "", collection = "" }, opts = {}) {
+export function fetchModels({ page = 1, pageSize = 25, q = "", collection = "", sort = "wait_time_index_desc" }, opts = {}) {
   const params = new URLSearchParams({
     page: String(page),
     page_size: String(pageSize),
+    sort: String(sort),
   });
   if (q.trim()) {
     params.set("q", q.trim());

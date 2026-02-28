@@ -72,7 +72,7 @@ body {
 
 .controls {
   display: grid;
-  grid-template-columns: 1fr 260px auto;
+  grid-template-columns: 1fr 220px 260px auto;
   gap: 0.8rem;
   align-items: end;
 }
